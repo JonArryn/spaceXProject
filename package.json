@@ -1,5 +1,26 @@
 {
   "dependencies": {
-    "axios": "^0.22.0"
-  }
+    "axios": "^0.22.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0-rc.0"
+  },
+  "name": "spacexproject",
+  "version": "1.0.0",
+  "description": "project to display data parsed from the SpaceX API",
+  "main": "controller.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonArryn/spaceXProject.git"
+  },
+  "author": "Jonathan Hatlee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonArryn/spaceXProject/issues"
+  },
+  "homepage": "https://github.com/JonArryn/spaceXProject#readme"
 }
