@@ -20,7 +20,7 @@ const renderCapsules = async function () {
   try {
     await model.getCapsulesAsync();
 
-    view.capsuleView(state.capsules.headers, state.capsules.data);
+    view.capsuleView(state.capsules.data);
   } catch (err) {
     console.error(err);
   }
