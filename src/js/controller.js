@@ -1,5 +1,6 @@
-import * as model from "../model.js";
-import * as view from "../views/capsuleView.js";
+import * as model from "./model.js";
+import * as view from "./views/capsuleView.js";
+import * as homeView from "./views/homeView.js";
 
 const log = console.log;
 
@@ -22,5 +23,11 @@ const createCapsules = async function () {
 window.addEventListener("hashchange", function () {
   if (this.location.hash === "#capsules") {
     createCapsules();
+  }
+});
+
+window.addEventListener("hashchange", function () {
+  if (this.location.hash === "#home") {
+    homeView.goHome();
   }
 });
