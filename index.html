@@ -4,25 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" defer src="src/js/controller.js"></script>
+    <script
+      type="module"
+      defer
+      src="src/js/controllers/capsuleController.js"
+    ></script>
     <title>SpaceX</title>
   </head>
   <body>
     <h1>SpaceX API</h1>
-
-    <h2>Capsules</h2>
-
-    <table class="table">
-      <tr class="table__header">
-        <th>Dataset 1</th>
-        <th>Dataset 2</th>
-        <th>Dataset 3</th>
-      </tr>
-      <tr class="table__rows">
-        <td>Foo</td>
-        <td>Bar</td>
-        <td>Pez</td>
-      </tr>
-    </table>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#capsules">Capsules</a>
+    </nav>
+    <div class="content">
+      <div class="content__header">
+        <h2>Welcome to my SpaceX API Project</h2>
+        <p>Click on a link in the nav bar to look at some data!</p>
+      </div>
+    </div>
+    <!-- <div class="pagination">
+      <label for="page-select">Results Per Page:</label>
+      <select class="pagination page-select">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </div> -->
   </body>
 </html>
