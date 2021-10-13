@@ -1,8 +1,11 @@
 const log = console.log;
 const content = document.querySelector(".content");
+const pageSelector = document.querySelector(".page-selector");
 
 export const capsuleView = function (data) {
+  // clear content
   content.innerHTML = "";
+  // create content and table headers
   content.insertAdjacentHTML(
     "afterbegin",
     `
@@ -22,6 +25,7 @@ export const capsuleView = function (data) {
     </tr>
   `
   );
+  // insert table rows
   const table = document.querySelector(".table");
   data.forEach((capsule) => {
     table.insertAdjacentHTML(
@@ -42,18 +46,16 @@ export const capsuleView = function (data) {
   `
     );
   });
-  content.insertAdjacentHTML(
-    "beforeend",
+};
+
+export const capsulePagination = function (data) {
+  pageSelector.insertAdjacentHTML(
+    "afterbegin",
     `
-  <div class="pagination">
-    <div class="pagination results-selector">
-      <label for="results-per">Results Per Page:</label>
-      <select class="pagination results-per">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-      </select>
-    </div>
-  </div>`
+    <p>Page ${data.numPage} of ${data.totalPages}</p>
+`
   );
+
+  const btnNextPage = document.querySelector(".next-page");
+  const btnPrevPage = document.querySelector(".prev-page");
 };

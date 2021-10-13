@@ -19,13 +19,21 @@
         <p>Click on a link in the nav bar to look at some data!</p>
       </div>
     </div>
-    <!-- <div class="pagination">
-      <label for="page-select">Results Per Page:</label>
-      <select class="pagination page-select">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-      </select>
-    </div> -->
+    <div class="pagination pagination-div hidden">
+      <div class="pagination page-selector">
+        <button class="prev-page">Prev</button>
+        <button class="next-page">Next</button>
+      </div>
+
+      <div class="pagination results-selector">
+        <label for="results-per">Results Per Page:</label>
+        <select class="pagination results-per">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+    </div>
   </body>
 </html>
