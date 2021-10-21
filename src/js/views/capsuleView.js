@@ -1,6 +1,8 @@
 const log = console.log;
 const content = document.querySelector(".content");
+const paginationDiv = document.querySelector(".pagination-div");
 const pageSelector = document.querySelector(".page-selector");
+const pageNumbers = document.querySelector(".page-num");
 
 export const capsuleView = function (data) {
   // clear content
@@ -49,13 +51,37 @@ export const capsuleView = function (data) {
 };
 
 export const capsulePagination = function (data) {
-  pageSelector.insertAdjacentHTML(
+  // display pagination
+  paginationDiv.classList.remove("hidden");
+  pageNumbers.innerHTML = "";
+  pageNumbers.insertAdjacentHTML(
     "afterbegin",
     `
-    <p>Page ${data.numPage} of ${data.totalPages}</p>
+    <p class="cur-page">Page ${data.numPage} of ${data.totalPages}</p>
 `
   );
+};
 
-  const btnNextPage = document.querySelector(".next-page");
-  const btnPrevPage = document.querySelector(".prev-page");
+export const pageChange = function (handler) {
+  paginationDiv.addEventListener("click", (event) => {
+    event.preventDefault();
+    const btn = event.target.closest(".btn");
+    if (!btn) return;
+
+    const btnValue = btn.dataset.jump;
+
+    handler(btnValue);
+  });
+};
+
+export const updateResults = function (handler) {
+  paginationDiv.addEventListener("change", (event) => {
+    event.preventDefault();
+    const numResults = event.target.closest(".results-per");
+    if (!numResults) return;
+
+    const resultValue = numResults.value;
+
+    handler(resultValue);
+  });
 };

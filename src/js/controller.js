@@ -39,7 +39,46 @@ const createCapsules = async function () {
   }
 };
 
+const pageUpdate = function (btnValue) {
+  if (btnValue === "prev" && state.capsules.pagination.numPage <= 1) {
+    return;
+  } else if (
+    btnValue === "next" &&
+    state.capsules.pagination.numPage >=
+      Math.max(...state.capsules.pagination.pageArr)
+  ) {
+    return;
+  } else if (btnValue === "prev") {
+    --state.capsules.pagination.numPage;
+  } else ++state.capsules.pagination.numPage;
+  log(state.capsules.pagination.numPage);
+  createCapsules();
+  view.capsuleView(state.capsules.data);
+};
+
+view.pageChange(pageUpdate);
+
+const resultsUpdate = function (resultQty) {
+  if (resultQty === "all") {
+    state.capsules.pagination.perPage = state.capsules.pagination.totalDocs;
+  } else state.capsules.pagination.perPage = +resultQty;
+  state.capsules.pagination.numPage = 1;
+  createCapsules();
+  view.capsuleView(state.capsules.data);
+};
+
+view.updateResults(resultsUpdate);
+
 // routing
+
+window.addEventListener("load", function () {
+  if (this.location.hash === "#home") {
+    homeView.goHome();
+  }
+  if (this.location.hash === "#capsules") {
+    createCapsules();
+  }
+});
 
 window.addEventListener("hashchange", function () {
   if (this.location.hash === "#home") {
