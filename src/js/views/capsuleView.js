@@ -15,13 +15,13 @@ export const capsuleView = function (data) {
   </div>
   <table class="table">
     <tr class="table__header">
-      <th class="column" data-property="serial"><a href="#capsules?sort=serial">Serial Number</a></th>
-      <th class="column" data-property="status"><a href="#capsules?sort=status">Current Status</a></th>
-      <th class="column" data-property="type"><a href="#capsules?sort=type">Capsule Type</a></th>
-      <th class="column" data-property="launches"><a href="#capsules?sort=launches">Launch Count</th>
-      <th class="column" data-property="water_landings"><a href="#capsules?sort=water_landings">Water Landings Count</a></th>
-      <th class="column" data-property="land_landings"><a href="#capsules?sort=land_landings">Land Landings Count</a></th>
-      <th class="column" data-property="reuse_count"><a href="#capsules?sort=reuse_count">Number of Resues</a></th>
+      <th class="column" data-property="serial"><a href="#capsules">Serial Number</a></th>
+      <th class="column" data-property="status"><a href="#capsules">Current Status</a></th>
+      <th class="column" data-property="type"><a href="#capsules">Capsule Type</a></th>
+      <th class="column" data-property="launches"><a href="#capsules">Launch Count</th>
+      <th class="column" data-property="water_landings"><a href="#capsules">Water Landings Count</a></th>
+      <th class="column" data-property="land_landings"><a href="#capsules">Land Landings Count</a></th>
+      <th class="column" data-property="reuse_count"><a href="#capsules">Number of Resues</a></th>
       <th>Last Seen</th>
     </tr>
   `
@@ -92,6 +92,7 @@ export const sort = function (handler) {
     const column = event.target.closest(".column");
     if (!column) return;
     // const sortArr = ["asc", "desc"];
+
     const currentSort = new Object();
     const sortField = column.dataset.property;
 
@@ -106,7 +107,9 @@ export const sort = function (handler) {
         sortDir = "asc";
         break;
     }
+    window.location.hash = `#capsules?sort=${column.dataset.property}&&order=${sortDir}`;
     currentSort[sortField] = sortDir;
+    sortDir = "";
     handler(currentSort);
   });
 };
