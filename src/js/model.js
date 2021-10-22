@@ -11,10 +11,10 @@ axios.defaults.baseURL = "https://api.spacexdata.com/v4";
 //     console.error(err);
 //   }
 // };
-export const getCapsules = async function (resLimit, numPage) {
+export const getCapsules = async function (resLimit, numPage, sortBy = {}) {
   try {
     const response = await axios.post(`/capsules/query`, {
-      options: { limit: resLimit, page: numPage },
+      options: { limit: resLimit, page: numPage, sort: sortBy },
     });
     log(response.data);
     return response.data;

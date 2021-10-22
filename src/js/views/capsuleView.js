@@ -1,7 +1,6 @@
 const log = console.log;
 const content = document.querySelector(".content");
 const paginationDiv = document.querySelector(".pagination-div");
-const pageSelector = document.querySelector(".page-selector");
 const pageNumbers = document.querySelector(".page-num");
 
 export const capsuleView = function (data) {
@@ -16,13 +15,13 @@ export const capsuleView = function (data) {
   </div>
   <table class="table">
     <tr class="table__header">
-      <th>Serial Number</th>
-      <th>Current Status</th>
-      <th>Capsule Type</th>
-      <th>Total Launch Count</th>
-      <th>Water Landings Count</th>
-      <th>Land Landings Count</th>
-      <th>Number of Resues</th>
+      <th class="column" data-property="serial"><a href="#capsules?sort=serial">Serial Number</a></th>
+      <th class="column" data-property="status"><a href="#capsules?sort=status">Current Status</a></th>
+      <th class="column" data-property="type"><a href="#capsules?sort=type">Capsule Type</a></th>
+      <th class="column" data-property="launches"><a href="#capsules?sort=launches">Launch Count</th>
+      <th class="column" data-property="water_landings"><a href="#capsules?sort=water_landings">Water Landings Count</a></th>
+      <th class="column" data-property="land_landings"><a href="#capsules?sort=land_landings">Land Landings Count</a></th>
+      <th class="column" data-property="reuse_count"><a href="#capsules?sort=reuse_count">Number of Resues</a></th>
       <th>Last Seen</th>
     </tr>
   `
@@ -83,5 +82,31 @@ export const updateResults = function (handler) {
     const resultValue = numResults.value;
 
     handler(resultValue);
+  });
+};
+
+export const sort = function (handler) {
+  let sortDir = "";
+  content.addEventListener("click", function (event) {
+    event.preventDefault();
+    const column = event.target.closest(".column");
+    if (!column) return;
+    // const sortArr = ["asc", "desc"];
+    const currentSort = new Object();
+    const sortField = column.dataset.property;
+
+    switch (sortDir) {
+      case "":
+        sortDir = "desc";
+        break;
+      case "asc":
+        sortDir = "desc";
+        break;
+      case "desc":
+        sortDir = "asc";
+        break;
+    }
+    currentSort[sortField] = sortDir;
+    handler(currentSort);
   });
 };

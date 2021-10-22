@@ -15,14 +15,17 @@ const state = {
       pageArr: [],
       numPage: 1,
     },
+    sort: { serial: "asc" },
   },
 };
 
 const createCapsules = async function () {
+  // state.capsules.sort = currentSort;
   try {
     const capsuleData = await model.getCapsules(
       state.capsules.pagination.perPage,
-      state.capsules.pagination.numPage
+      state.capsules.pagination.numPage,
+      state.capsules.sort
     );
     state.capsules.headers = Object.keys(capsuleData.docs[0]);
     state.capsules.data = capsuleData.docs;
@@ -31,6 +34,7 @@ const createCapsules = async function () {
     state.capsules.pagination.pageArr = [
       ...Array(state.capsules.pagination.totalPages).keys(),
     ].map((i) => i + 1);
+
     view.capsuleView(state.capsules.data);
     view.capsulePagination(state.capsules.pagination);
     log(state.capsules);
@@ -69,22 +73,38 @@ const resultsUpdate = function (resultQty) {
 
 view.updateResults(resultsUpdate);
 
+const updateSort = function (sortObj) {
+  state.capsules.sort = sortObj;
+  createCapsules();
+  view.capsuleView(state.capsules.data);
+};
+
+view.sort(updateSort);
+
 // routing
 
 window.addEventListener("load", function () {
   if (this.location.hash === "#home") {
     homeView.goHome();
   }
-  if (this.location.hash === "#capsules") {
+  if (this.location.hash.indexOf("capsules") === 1) {
     createCapsules();
   }
 });
 
+// window.addEventListener("hashchange", function () {
+//   if (this.location.hash === "#home") {
+//     homeView.goHome();
+//   }
+//   if (this.location.hash === "#capsules") {
+//     createCapsules();
+//   }
+// });
 window.addEventListener("hashchange", function () {
   if (this.location.hash === "#home") {
     homeView.goHome();
   }
-  if (this.location.hash === "#capsules") {
+  if (this.location.hash.indexOf("capsules") === 1) {
     createCapsules();
   }
 });
