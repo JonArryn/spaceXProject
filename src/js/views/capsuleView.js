@@ -86,7 +86,7 @@ export const updateResults = function (handler) {
 };
 
 export const sort = function (handler) {
-  let sortDir = "";
+  let orderBy = "asc";
   content.addEventListener("click", function (event) {
     event.preventDefault();
     const column = event.target.closest(".column");
@@ -96,20 +96,20 @@ export const sort = function (handler) {
     const currentSort = new Object();
     const sortField = column.dataset.property;
 
-    switch (sortDir) {
-      case "":
-        sortDir = "desc";
+    switch (orderBy) {
+      // case "":
+      //   orderBy = "asc";
+      //   break;
+      case "desc":
+        orderBy = "asc";
         break;
       case "asc":
-        sortDir = "desc";
-        break;
-      case "desc":
-        sortDir = "asc";
+        orderBy = "desc";
         break;
     }
-    window.location.hash = `#capsules?sort=${column.dataset.property}&&order=${sortDir}`;
-    currentSort[sortField] = sortDir;
-    sortDir = "";
+    window.location.hash = `#capsules?sort=${column.dataset.property}&&order=${orderBy}`;
+    currentSort[sortField] = orderBy;
+
     handler(currentSort);
   });
 };
