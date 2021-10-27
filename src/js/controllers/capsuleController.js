@@ -1,6 +1,6 @@
-import * as model from "./model.js";
-import * as view from "./views/capsuleView.js";
-import * as homeView from "./views/homeView.js";
+import * as model from "../model.js";
+import * as view from "../views/capsuleView.js";
+import * as homeView from "../views/homeView.js";
 
 const log = console.log;
 
@@ -19,7 +19,7 @@ const state = {
   },
 };
 
-const createCapsules = async function () {
+export const createCapsules = async function () {
   // state.capsules.sort = currentSort;
   try {
     const capsuleData = await model.getCapsules(
@@ -43,7 +43,7 @@ const createCapsules = async function () {
   }
 };
 
-const pageUpdate = function (btnValue) {
+export const pageUpdate = function (btnValue) {
   if (btnValue === "prev" && state.capsules.pagination.numPage <= 1) {
     return;
   } else if (
@@ -60,9 +60,7 @@ const pageUpdate = function (btnValue) {
   view.capsuleView(state.capsules.data);
 };
 
-view.pageChange(pageUpdate);
-
-const resultsUpdate = function (resultQty) {
+export const resultsUpdate = function (resultQty) {
   if (resultQty === "all") {
     state.capsules.pagination.perPage = state.capsules.pagination.totalDocs;
   } else state.capsules.pagination.perPage = +resultQty;
@@ -71,40 +69,8 @@ const resultsUpdate = function (resultQty) {
   view.capsuleView(state.capsules.data);
 };
 
-view.updateResults(resultsUpdate);
-
-const updateSort = function (sortObj) {
+export const updateSort = function (sortObj) {
   state.capsules.sort = sortObj;
   createCapsules();
   view.capsuleView(state.capsules.data);
 };
-
-view.sort(updateSort);
-
-// routing
-
-window.addEventListener("load", function () {
-  if (this.location.hash === "#home") {
-    homeView.goHome();
-  }
-  if (this.location.hash.indexOf("capsules") === 1) {
-    createCapsules();
-  }
-});
-
-// window.addEventListener("hashchange", function () {
-//   if (this.location.hash === "#home") {
-//     homeView.goHome();
-//   }
-//   if (this.location.hash === "#capsules") {
-//     createCapsules();
-//   }
-// });
-window.addEventListener("hashchange", function () {
-  if (this.location.hash === "#home") {
-    homeView.goHome();
-  }
-  if (this.location.hash.indexOf("capsules") === 1) {
-    createCapsules();
-  }
-});
