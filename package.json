@@ -9,7 +9,7 @@
   "name": "spacexproject",
   "version": "1.0.0",
   "description": "project to display data parsed from the SpaceX API",
-  "main": "controller.js",
+  "main": "index.html",
   "scripts": {
     "start": "parcel serve index.html",
     "build": "parcel build index.html"
