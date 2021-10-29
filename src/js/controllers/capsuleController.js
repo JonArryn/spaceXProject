@@ -1,6 +1,5 @@
 import * as model from "../model.js";
 import * as view from "../views/capsuleView.js";
-import * as homeView from "../views/homeView.js";
 
 const log = console.log;
 

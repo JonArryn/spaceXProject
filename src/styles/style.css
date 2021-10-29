@@ -1,3 +1,50 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background-color: black;
+}
+
+a {
+  color: deepskyblue;
+}
+
 .hidden {
   display: none;
+}
+
+.top-navigation {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 50%;
+}
+
+.grid-container {
+  width: 75%;
+  padding: 15px;
+  background: silver;
+}
+
+.grid {
+  background: black;
+}
+
+.grid > a {
+  background: rgb(79, 79, 79);
+}
+
+.capsule-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr) 4fr;
+  row-gap: 2px;
+}
+.capsule-grid > div:nth-child(16n + 1),
+.capsule-grid > div:nth-child(16n + 2),
+.capsule-grid > div:nth-child(16n + 3),
+.capsule-grid > div:nth-child(16n + 4),
+.capsule-grid > div:nth-child(16n + 5),
+.capsule-grid > div:nth-child(16n + 6),
+.capsule-grid > div:nth-child(16n + 7),
+.capsule-grid > div:nth-child(16n + 8) {
+  background: darkslategray;
 }

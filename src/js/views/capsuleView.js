@@ -2,6 +2,53 @@ const log = console.log;
 const content = document.querySelector(".content");
 const paginationDiv = document.querySelector(".pagination-div");
 const pageNumbers = document.querySelector(".page-num");
+let resultsPerPage;
+
+// export const capsuleView = function (data) {
+//   // clear content
+//   content.innerHTML = "";
+//   // create content and table headers
+//   content.insertAdjacentHTML(
+//     "afterbegin",
+//     `
+//   <div class="content__header">
+//     <h2>Capsules</h2>
+//   </div>
+//   <table class="table">
+//     <tr class="table__header">
+//       <th class="column" data-property="serial"><a href="#capsules">Serial Number</a></th>
+//       <th class="column" data-property="status"><a href="#capsules">Current Status</a></th>
+//       <th class="column" data-property="type"><a href="#capsules">Capsule Type</a></th>
+//       <th class="column" data-property="launches"><a href="#capsules">Launch Count</th>
+//       <th class="column" data-property="water_landings"><a href="#capsules">Water Landings Count</a></th>
+//       <th class="column" data-property="land_landings"><a href="#capsules">Land Landings Count</a></th>
+//       <th class="column" data-property="reuse_count"><a href="#capsules">Number of Resues</a></th>
+//       <th>Last Seen</th>
+//     </tr>
+//   `
+//   );
+//   // insert table rows
+//   const table = document.querySelector(".table");
+//   data.forEach((capsule) => {
+//     table.insertAdjacentHTML(
+//       "beforeend",
+//       `
+//   <tr class="table__rows">
+//     <td>${capsule.serial}</td>
+//     <td>${capsule.status}</td>
+//     <td>${capsule.type}</td>
+//     <td>${capsule.launches.length}</td>
+//     <td>${capsule.water_landings}</td>
+//     <td>${capsule.land_landings}</td>
+//     <td>${capsule.reuse_count}</td>
+//     <td>${
+//       capsule.last_update ? capsule.last_update : "Location and status unknown"
+//     }</td>
+//   </tr>
+//   `
+//     );
+//   });
+// };
 
 export const capsuleView = function (data) {
   // clear content
@@ -13,42 +60,42 @@ export const capsuleView = function (data) {
   <div class="content__header">
     <h2>Capsules</h2>
   </div>
-  <table class="table">
-    <tr class="table__header">
-      <th class="column" data-property="serial"><a href="#capsules">Serial Number</a></th>
-      <th class="column" data-property="status"><a href="#capsules">Current Status</a></th>
-      <th class="column" data-property="type"><a href="#capsules">Capsule Type</a></th>
-      <th class="column" data-property="launches"><a href="#capsules">Launch Count</th>
-      <th class="column" data-property="water_landings"><a href="#capsules">Water Landings Count</a></th>
-      <th class="column" data-property="land_landings"><a href="#capsules">Land Landings Count</a></th>
-      <th class="column" data-property="reuse_count"><a href="#capsules">Number of Resues</a></th>
-      <th>Last Seen</th>
-    </tr>
+<div class="grid-container">
+  <div class="grid capsule-grid">
+      <a class="column" data-property="serial" href="#capsules">Serial Number</a>
+      <a class="column" data-property="status" href="#capsules">Current Status</a>
+      <a class="column" data-property="type" href="#capsules">Capsule Type</a>
+      <a class="column" data-property="launches" href="#capsules">Launch Count
+      <a class="column" data-property="water_landings" href="#capsules">Water Landings Count</a>
+      <a class="column" data-property="land_landings" href="#capsules">Land Landings Count</a>
+      <a class="column" data-property="reuse_count" href="#capsules">Number of Resues</a>
+      <a>Last Seen</a>
+    </div>
+</div>
   `
   );
   // insert table rows
-  const table = document.querySelector(".table");
+  const grid = document.querySelector(".capsule-grid");
   data.forEach((capsule) => {
-    table.insertAdjacentHTML(
+    grid.insertAdjacentHTML(
       "beforeend",
       `
-  <tr class="table__rows">  
-    <td>${capsule.serial}</td>
-    <td>${capsule.status}</td>
-    <td>${capsule.type}</td>
-    <td>${capsule.launches.length}</td>
-    <td>${capsule.water_landings}</td>
-    <td>${capsule.land_landings}</td>
-    <td>${capsule.reuse_count}</td>
-    <td>${
+    
+    <div class="grid-item">${capsule.serial}</div>
+    <div class="grid-item">${capsule.status}</div>
+    <div class="grid-item">${capsule.type}</div>
+    <div class="grid-item">${capsule.launches.length}</div>
+    <div class="grid-item">${capsule.water_landings}</div>
+    <div class="grid-item">${capsule.land_landings}</div>
+    <div class="grid-item">${capsule.reuse_count}</div>
+    <div class="grid-item">${
       capsule.last_update ? capsule.last_update : "Location and status unknown"
-    }</td>
-  </tr>
+    }</div>
+
   `
     );
   });
 };
-
 export const capsulePagination = function (data) {
   // display pagination
   paginationDiv.classList.remove("hidden");
