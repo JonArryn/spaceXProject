@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      type="module"
-      defer
-      src="src/js//controllers/controller.js"
-    ></script>
-    <link rel="stylesheet" type="text/css" href="src/styles/style.css" />
-    <title>SpaceX</title>
-  </head>
-  <body>
-    <h1>SpaceX API</h1>
-    <nav class="top-navigation">
-      <a href="#home">Home</a>
-      <a href="#capsules">Capsules</a>
-    </nav>
-    <div class="content">
-      <div class="content__header">
-        <h2>Welcome to my SpaceX API Project</h2>
-        <p>Click on a link in the nav bar to look at some data!</p>
-      </div>
-    </div>
-    <div class="pagination pagination-div hidden">
-      <div class="pagination page-num"></div>
-      <div class="pagination page-selector">
-        <button class="btn prev-page" data-jump="prev">Prev</button>
-        <button class="btn next-page" data-jump="next">Next</button>
-      </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script
+			type="module"
+			defer
+			src="src/js//controllers/controller.js"
+		></script>
+		<link rel="stylesheet" type="text/css" href="src/styles/style.css" />
+		<title>SpaceX</title>
+	</head>
+	<body>
+		<h1>SpaceX API</h1>
+		<nav class="top-navigation">
+			<a href="#home">Home</a>
+			<a href="#capsules">Capsules</a>
+		</nav>
+		<div class="content">
+			<div class="content__header">
+				<h2>Welcome to my SpaceX API Project</h2>
+				<p>Click on a link in the nav bar to look at some data!</p>
+			</div>
+		</div>
+		<div class="pagination pagination-div hidden">
+			<div class="pagination page-num"></div>
+			<div class="pagination page-selector">
+				<button class="btn prev-page" data-jump="prev">Prev</button>
+				<button class="btn next-page" data-jump="next">Next</button>
+			</div>
 
-      <div class="pagination results-selector">
-        <label for="results-per">Results Per Page:</label>
-        <select class="pagination results-per">
-          <option class="results-qty" value="5">5</option>
-          <option class="results-qty" value="10" selected>10</option>
-          <option class="results-qty" value="20">20</option>
-          <option class="results-qty" value="all">All</option>
-        </select>
-      </div>
-    </div>
-  </body>
+			<div class="pagination results-selector">
+				<label for="results-per">Results Per Page:</label>
+				<select class="pagination results-per">
+					<option class="results-qty" value="5">5</option>
+					<option class="results-qty" value="10" selected>10</option>
+					<option class="results-qty" value="20">20</option>
+					<option class="results-qty" value="all">All</option>
+				</select>
+			</div>
+		</div>
+	</body>
 </html>
